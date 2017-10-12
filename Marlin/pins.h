@@ -270,12 +270,14 @@
 #ifndef FAN_PIN
   #define FAN_PIN -1
 #endif
+
 #ifndef FAN1_PIN
   #define FAN1_PIN -1
 #endif
 #ifndef FAN2_PIN
   #define FAN2_PIN -1
 #endif
+
 #ifndef CONTROLLER_FAN_PIN
   #define CONTROLLER_FAN_PIN  -1
 #endif
