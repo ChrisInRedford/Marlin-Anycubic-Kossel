@@ -475,7 +475,7 @@
 // Make delta curves from many straight lines (linear interpolation).
 // This is a trade-off between visible corners (not enough segments)
 // and processor overload (too many expensive sqrt calls).
-#define DELTA_SEGMENTS_PER_SECOND 125
+#define DELTA_SEGMENTS_PER_SECOND 150
 
 // After homing move down to a height where XY movement is unconstrained
 //#define DELTA_HOME_TO_SAFE_ZONE
@@ -639,7 +639,7 @@
 #define DEFAULT_XJERK                 7.0
 #define DEFAULT_YJERK                 7.0
 #define DEFAULT_ZJERK                 7.0 //Must be same XY for Delta
-#define DEFAULT_EJERK                 4.0
+#define DEFAULT_EJERK                 7.0
 
 //===========================================================================
 //============================= Z Probe Options =============================
@@ -753,8 +753,8 @@
  *      O-- FRONT --+
  *    (0,0)
  */
-#define X_PROBE_OFFSET_FROM_EXTRUDER 10  // X offset: -left  +right  [of the nozzle]
-#define Y_PROBE_OFFSET_FROM_EXTRUDER 10  // Y offset: -front +behind [the nozzle]
+#define X_PROBE_OFFSET_FROM_EXTRUDER 0  // X offset: -left  +right  [of the nozzle]
+#define Y_PROBE_OFFSET_FROM_EXTRUDER 0  // Y offset: -front +behind [the nozzle]
 #define Z_PROBE_OFFSET_FROM_EXTRUDER 0   // Z offset: -below +above  [the nozzle]
 
 // X and Y axis travel speed (mm/m) between probes
@@ -947,10 +947,10 @@
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
 
   // Set the boundaries for probing (where the probe can reach).
-  #define LEFT_PROBE_BED_POSITION 50
-  #define RIGHT_PROBE_BED_POSITION -50
-  #define FRONT_PROBE_BED_POSITION 50
-  #define BACK_PROBE_BED_POSITION -50
+  #define LEFT_PROBE_BED_POSITION -(DELTA_PRINTABLE_RADIUS - 15)
+  #define RIGHT_PROBE_BED_POSITION (DELTA_PRINTABLE_RADIUS - 15)
+  #define FRONT_PROBE_BED_POSITION (DELTA_PRINTABLE_RADIUS - 15)
+  #define BACK_PROBE_BED_POSITION -(DELTA_PRINTABLE_RADIUS - 15)
 
   // The Z probe minimum outer margin (to validate G29 parameters).
   #define MIN_PROBE_EDGE 10

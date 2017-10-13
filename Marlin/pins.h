@@ -114,6 +114,9 @@
   #include "pins_RUMBA.h"             // ATmega2560
 #elif MB(BQ_ZUM_MEGA_3D)
   #include "pins_BQ_ZUM_MEGA_3D.h"    // ATmega2560
+#elif MB(BOARD_TRIGORILLA_13)
+  #define IS_RAMPS_EFB
+  #include "pins_TRIGORILLA_EFB.h"    // ATmega2560
 
 //
 // Other ATmega1280, ATmega2560
