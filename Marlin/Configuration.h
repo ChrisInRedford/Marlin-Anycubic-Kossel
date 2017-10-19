@@ -520,15 +520,19 @@
 // height from z=0 to home position
 #define DELTA_HEIGHT 300.0 // get this value from auto calibrate
 
-#define DELTA_ENDSTOP_ADJ { -0.86, -0.93, 0.00 } // get these from auto calibrate
+//DONE: Auto Calibrate Values (.Height:300.42    Ex:-0.13  Ey:-0.27  Ez:+0.00    Radius:97.85
+//Done: .Tower angle : Tx:-0.26  Ty : +0.05  Tz : +0.21
+//DONE: 20 OCT 2017
+
+#define DELTA_ENDSTOP_ADJ { -0.13, -0.27, 0.00 } // get these from auto calibrate
 
 // Horizontal distance bridged by diagonal push rods when effector is centered.
-#define DELTA_RADIUS 99.55 //mm  Get this value from auto calibrate
+#define DELTA_RADIUS 97.85 //mm  Get this value from auto calibrate
 
 // Trim adjustments for individual towers
 // tower angle corrections for X and Y tower / rotate XYZ so Z tower angle = 0
 // measured in degrees anticlockwise looking from above the printer
-#define DELTA_TOWER_ANGLE_TRIM { -0.45, -0.23, 0.0 } // get these values from auto calibrate
+#define DELTA_TOWER_ANGLE_TRIM { -0.26, -0.05, 0.0 } // get these values from auto calibrate
 
 // delta radius and diaginal rod adjustments measured in mm
 //#define DELTA_RADIUS_TRIM_TOWER { 0.0, 0.0, 0.0 }
@@ -604,7 +608,7 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2[, E3[, E4]]]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 100, 100, 100, (96 * 1.05) } //90mm extruded of 100mm 
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 100, 100, 100, (96 * 1) } //90mm extruded of 100mm 
 //DONE: CWA 11 OCT 2017 (Lowered from 1.1 to 1.05 due to over extrusion)
 
 /**
