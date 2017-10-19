@@ -78,7 +78,6 @@
 #define SHOW_BOOTSCREEN
 #define STRING_SPLASH_LINE1 SHORT_BUILD_VERSION // will be shown during bootup in line 1
 #define STRING_SPLASH_LINE2 WEBSITE_URL         // will be shown during bootup in line 2
-//DONE: 13 OCT TMC2130 configs done
 //const char *build_str = "Built: "  __DATE__ " by " STRING_CONFIG_H_AUTHOR;
 
 
