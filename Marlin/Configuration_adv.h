@@ -212,8 +212,9 @@
  * Multiple extruders can be assigned to the same pin in which case
  * the fan will turn on when any selected extruder is above the threshold.
  */
-#define FAN2_PIN 44 //Anycubic Trigorilla FAN2 for E0
-#define E0_AUTO_FAN_PIN FAN2_PIN
+//#define FAN2_PIN 9 //Anycubic Trigorilla FAN2 for Part cooling
+//#define E0_AUTO_FAN_PIN RAMPS_D9_PIN
+#define E0_AUTO_FAN_PIN FAN2_PIN //Anycubic Trigorilla Fan Pin 10/16/2017 - CWA
 #define E1_AUTO_FAN_PIN -1
 #define E2_AUTO_FAN_PIN -1
 #define E3_AUTO_FAN_PIN -1
@@ -925,11 +926,11 @@
 #if ENABLED(HAVE_TMC2130)
 
   // CHOOSE YOUR MOTORS HERE, THIS IS MANDATORY
-  //#define X_IS_TMC2130
+  #define X_IS_TMC2130
   //#define X2_IS_TMC2130
-  //#define Y_IS_TMC2130
+  #define Y_IS_TMC2130
   //#define Y2_IS_TMC2130
-  //#define Z_IS_TMC2130
+  #define Z_IS_TMC2130
   //#define Z2_IS_TMC2130
   //#define E0_IS_TMC2130
   //#define E1_IS_TMC2130
@@ -942,7 +943,7 @@
    */
 
   #define R_SENSE           0.11  // R_sense resistor for SilentStepStick2130
-  #define HOLD_MULTIPLIER    0.5  // Scales down the holding current from run current
+  #define HOLD_MULTIPLIER    0.7  // Scales down the holding current from run current
   #define INTERPOLATE          1  // Interpolate X/Y/Z_MICROSTEPS to 256
 
   #define X_CURRENT         1000  // rms current in mA. Multiply by 1.41 for peak current.
@@ -982,7 +983,7 @@
    * Use Trinamic's ultra quiet stepping mode.
    * When disabled, Marlin will use spreadCycle stepping mode.
    */
-  #define STEALTHCHOP
+  //#define STEALTHCHOP
 
   /**
    * Let Marlin automatically control stepper current.
@@ -1055,7 +1056,7 @@
    *   stepperX.interpolate(0); \
    * }
    */
-  #define  TMC2130_ADV() {  }
+  #define  TMC2130_ADV() { }
 
 #endif // HAVE_TMC2130
 

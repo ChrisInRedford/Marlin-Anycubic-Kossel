@@ -78,6 +78,7 @@
 #define SHOW_BOOTSCREEN
 #define STRING_SPLASH_LINE1 SHORT_BUILD_VERSION // will be shown during bootup in line 1
 #define STRING_SPLASH_LINE2 WEBSITE_URL         // will be shown during bootup in line 2
+//DONE: 13 OCT TMC2130 configs done
 //const char *build_str = "Built: "  __DATE__ " by " STRING_CONFIG_H_AUTHOR;
 
 
@@ -120,7 +121,8 @@
 // The following define selects which electronics board you have.
 // Please choose the name from boards.h that matches your setup
 #ifndef MOTHERBOARD
-  #define MOTHERBOARD BOARD_RAMPS_13_EFB //Trigorilla Anycubic Board
+  //#define MOTHERBOARD BOARD_RAMPS_13_EFB //Trigorilla Anycubic Board
+#define MOTHERBOARD BOARD_RAMPS_14_EFB
 #endif
 
 // Optional custom name for your RepStrap or other custom machine
@@ -354,9 +356,14 @@
 
   //Kossel 10/01/2017
   //Auto PID tuned
-	#define DEFAULT_Kp 22.89
-	#define DEFAULT_Ki 1.82
-	#define DEFAULT_Kd 71.99
+	//#define DEFAULT_Kp 22.89
+	//#define DEFAULT_Ki 1.82
+	//#define DEFAULT_Kd 71.99
+
+//CWA 15 OCT 2017
+#define  DEFAULT_Kp 15.61
+#define  DEFAULT_Ki 0.89
+#define  DEFAULT_Kd 68.10
 
   // Ultimaker
   //#define  DEFAULT_Kp 22.2
@@ -563,7 +570,7 @@
 // Mechanical endstop with COM to ground and NC to Signal uses "false" here (most common setup).
 #define X_MIN_ENDSTOP_INVERTING false // set to true to invert the logic of the endstop.
 #define Y_MIN_ENDSTOP_INVERTING false // set to true to invert the logic of the endstop.
-#define Z_MIN_ENDSTOP_INVERTING true // set to true to invert the logic of the endstop.
+#define Z_MIN_ENDSTOP_INVERTING false // set to true to invert the logic of the endstop.
 #define X_MAX_ENDSTOP_INVERTING false // set to true to invert the logic of the endstop.
 #define Y_MAX_ENDSTOP_INVERTING false // set to true to invert the logic of the endstop.
 #define Z_MAX_ENDSTOP_INVERTING false // set to true to invert the logic of the endstop.
@@ -624,8 +631,8 @@
  *   M204 R    Retract Acceleration
  *   M204 T    Travel Acceleration
  */
-#define DEFAULT_ACCELERATION          900    // X, Y, Z and E acceleration for printing moves
-#define DEFAULT_RETRACT_ACCELERATION  900    // E acceleration for retracts
+#define DEFAULT_ACCELERATION          1000    // X, Y, Z and E acceleration for printing moves
+#define DEFAULT_RETRACT_ACCELERATION  1000    // E acceleration for retracts
 #define DEFAULT_TRAVEL_ACCELERATION   1000    // X, Y, Z acceleration for travel (non printing) moves
 
 /**
@@ -1030,7 +1037,7 @@
 #define LCD_BED_LEVELING
 
 #if ENABLED(LCD_BED_LEVELING)
-  #define MBL_Z_STEP 0.050    // Step size while manually probing Z axis.
+  #define MBL_Z_STEP 0.0750    // Step size while manually probing Z axis.
   #define LCD_PROBE_Z_RANGE 4 // Z Range centered on Z_MIN_POS for LCD Z adjustment
   #define LEVEL_BED_CORNERS   // Add an option to move between corners
 #endif
@@ -1301,7 +1308,7 @@
  * you must uncomment the following option or it won't work.
  *
  */
-#define SDSUPPORT
+//#define SDSUPPORT
 
 /**
  * SD CARD: SPI SPEED
@@ -1318,7 +1325,7 @@
  *
  * Use CRC checks and retries on the SD communication.
  */
-#define SD_CHECK_AND_RETRY
+//#define SD_CHECK_AND_RETRY
 
 //
 // ENCODER SETTINGS
