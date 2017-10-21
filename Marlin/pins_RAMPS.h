@@ -152,6 +152,10 @@
 #ifndef FAN2_PIN
   #define FAN2_PIN 44
 #endif
+//DONE: Added for Baily (Second parts cooling fan)
+#ifndef FAN1_PIN
+  #define FAN1_PIN 7
+#endif
 #ifndef MOSFET_D_PIN
   #define MOSFET_D_PIN  -1
 #endif
