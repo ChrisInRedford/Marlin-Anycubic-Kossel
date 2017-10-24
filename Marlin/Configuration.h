@@ -37,7 +37,7 @@
  */
 #ifndef CONFIGURATION_H
 #define CONFIGURATION_H
-#define CONFIGURATION_H_VERSION 010100
+#define CONFIGURATION_H_VERSION 010101
 
 //===========================================================================
 //============================= Getting Started =============================
@@ -74,11 +74,10 @@
 // User-specified version info of this build to display in [Pronterface, etc] terminal window during
 // startup. Implementation of an idea by Prof Braino to inform user that any changes made to this
 // build by the user have been successfully uploaded into firmware.
-#define STRING_CONFIG_H_AUTHOR "CWA" // Who made the changes.
+#define STRING_CONFIG_H_AUTHOR "(generic) Marlin" // Who made the changes.
 #define SHOW_BOOTSCREEN
 #define STRING_SPLASH_LINE1 SHORT_BUILD_VERSION // will be shown during bootup in line 1
 #define STRING_SPLASH_LINE2 WEBSITE_URL         // will be shown during bootup in line 2
-//const char *build_str = "Built: "  __DATE__ " by " STRING_CONFIG_H_AUTHOR;
 
 
 //
@@ -120,8 +119,8 @@
 // The following define selects which electronics board you have.
 // Please choose the name from boards.h that matches your setup
 #ifndef MOTHERBOARD
-  //#define MOTHERBOARD BOARD_RAMPS_13_EFB //Trigorilla Anycubic Board
-#define MOTHERBOARD BOARD_RAMPS_14_EFB
+  #define MOTHERBOARD BOARD_TRIGORILLA_13 //Trigorilla Anycubic Board
+//#define MOTHERBOARD BOARD_RAMPS_14_EFB
 #endif
 
 // Optional custom name for your RepStrap or other custom machine
@@ -359,7 +358,7 @@
 	//#define DEFAULT_Ki 1.82
 	//#define DEFAULT_Kd 71.99
 
-//CWA 15 OCT 2017
+//Kossel Mini with stock effector and thermal insulation. TO GET YOUR VALUES, PLEASE RUN AUTOPID TUNE: "M303 E0 S200 C8"
 #define  DEFAULT_Kp 15.61
 #define  DEFAULT_Ki 0.89
 #define  DEFAULT_Kd 68.10
@@ -498,7 +497,7 @@
 
 #if ENABLED(DELTA_AUTO_CALIBRATION)
 // set the default number of probe points : n*n (1 -> 7)
-#define DELTA_CALIBRATION_DEFAULT_POINTS 4
+#define DELTA_CALIBRATION_DEFAULT_POINTS 2
 #endif
 
 #if ENABLED(DELTA_AUTO_CALIBRATION) || ENABLED(DELTA_CALIBRATION_MENU)
@@ -507,33 +506,25 @@
 // Set the steprate for papertest probing
 #define PROBE_MANUALLY_STEP 0.100
 #endif
- //DONE: Auto-Calibration of Delta done 07 OCT 2017 - CWA
-//.Height:292.86    Ex:-0.86  Ey:-0.93  Ez:+0.00    Radius:99.55
-//.Tower angle : Tx:-0.45  Ty : -0.23  Tz : +0.00
 
 // Print surface diameter/2 minus unreachable space (avoid collisions with vertical towers).
 #define DELTA_PRINTABLE_RADIUS 90.0 // mm
 
 // Center-to-center distance of the holes in the diagonal push rods.
-//#define DELTA_DIAGONAL_ROD 218.0 // mm 
-//DONE: 20 OCT 2017 50mm is actually 51.06. This is off.
-#define DELTA_DIAGONAL_ROD 215.96 //mm //CWA 21 OCT 2017
+//#define DELTA_DIAGONAL_ROD 218.0 // mm Stock firmware is not always correct
+#define DELTA_DIAGONAL_ROD 215.96 //mm 
 // height from z=0 to home position
 #define DELTA_HEIGHT 300.0 // get this value from auto calibrate
 
-#define DELTA_ENDSTOP_ADJ { -0.86, -0.93, 0.00 } // get these from auto calibrate
+#define DELTA_ENDSTOP_ADJ { 0.00, 0.00, 0.00 } // get these from auto calibrate
 
 // Horizontal distance bridged by diagonal push rods when effector is centered.
-#define DELTA_RADIUS 99.55 //mm  Get this value from auto calibrate
+#define DELTA_RADIUS 99.00 //mm  Get this value from auto calibrate
 
 // Trim adjustments for individual towers
 // tower angle corrections for X and Y tower / rotate XYZ so Z tower angle = 0
 // measured in degrees anticlockwise looking from above the printer
-#define DELTA_TOWER_ANGLE_TRIM { -0.45, -0.23, 0.0 } // get these values from auto calibrate
-
-// delta radius and diaginal rod adjustments measured in mm
-//#define DELTA_RADIUS_TRIM_TOWER { 0.0, 0.0, 0.0 }
-//#define DELTA_DIAGONAL_ROD_TRIM_TOWER { 0.0, 0.0, 0.0 }
+#define DELTA_TOWER_ANGLE_TRIM { 0.00, 0.00, 0.00 } // get these values from auto calibrate
 
 #endif
 
@@ -605,8 +596,9 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2[, E3[, E4]]]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 100, 100, 100, (96 * 1.005) } //90mm extruded of 100mm 
-//DONE: CWA 11 OCT 2017 (Lowered from 1.1 to 1.05 due to over extrusion)
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 80, (96 * 1.00) } // 
+//TODO: Heat extruder to 205C, mark 110mm of filament and extrude 100mm. Measure the difference and adjust the equation
+//TODO: Example, asking for 100mm gives 110mm, this is off by 10%. Equation would be (96 * 90) YOU RRETULTS WILL BE DIFFERENT
 
 /**
  * Default Max Feed Rate (mm/s)
@@ -765,7 +757,7 @@
 #define Z_PROBE_OFFSET_FROM_EXTRUDER 0   // Z offset: -below +above  [the nozzle]
 
 // X and Y axis travel speed (mm/m) between probes
-#define XY_PROBE_SPEED 6000
+#define XY_PROBE_SPEED 9000 //THIS IS MM PER MINIUTE. Not PER SECOND
 
 // Speed for the first approach when double-probing (with PROBE_DOUBLE_TOUCH)
 #define Z_PROBE_SPEED_FAST HOMING_FEEDRATE_Z
@@ -823,11 +815,10 @@
 // @section machine
 
 // Invert the stepper direction. Change (or reverse the motor connector) if an axis goes the wrong way.
-//Set Up with TMC2100 on 19 OCT 2017 - CWA
-#define INVERT_X_DIR false
-#define INVERT_Y_DIR false
-#define INVERT_Z_DIR false
-//Set Up for TMC2100 with FALSE
+#define INVERT_X_DIR true
+#define INVERT_Y_DIR true
+#define INVERT_Z_DIR true
+//Set Up for TMC2100 with false
 
 // Enable this option for Toshiba stepper drivers
 //#define CONFIG_STEPPERS_TOSHIBA
@@ -1039,7 +1030,7 @@
 #define LCD_BED_LEVELING
 
 #if ENABLED(LCD_BED_LEVELING)
-  #define MBL_Z_STEP 0.0750    // Step size while manually probing Z axis.
+  #define MBL_Z_STEP 0.050    // Step size while manually probing Z axis.
   #define LCD_PROBE_Z_RANGE 4 // Z Range centered on Z_MIN_POS for LCD Z adjustment
   #define LEVEL_BED_CORNERS   // Add an option to move between corners
 #endif
@@ -1060,7 +1051,8 @@
 // For DELTA this is the top-center of the Cartesian print volume.
 //#define MANUAL_X_HOME_POS 0
 //#define MANUAL_Y_HOME_POS 0
-#define MANUAL_Z_HOME_POS 306.5 //DONE: CWA 07 OCT 2017
+#define MANUAL_Z_HOME_POS 306.5 
+//TOTO: FIND YOUR Manual_Z by running "G1 Z10" then lowering the Z point until you touch the bed
 
 // Use "Z Safe Homing" to avoid homing with a Z probe outside the bed area.
 //

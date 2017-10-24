@@ -32,7 +32,7 @@
  */
 #ifndef CONFIGURATION_ADV_H
 #define CONFIGURATION_ADV_H
-#define CONFIGURATION_ADV_H_VERSION 010100
+#define CONFIGURATION_ADV_H_VERSION 010101
 
 // @section temperature
 
@@ -214,7 +214,7 @@
  */
 //#define FAN2_PIN 9 //Anycubic Trigorilla FAN2 for Part cooling
 //#define E0_AUTO_FAN_PIN RAMPS_D9_PIN
-#define E0_AUTO_FAN_PIN FAN2_PIN //Anycubic Trigorilla Fan Pin 10/16/2017 - CWA
+#define E0_AUTO_FAN_PIN FAN2_PIN //Anycubic Trigorilla Fan Pin
 #define E1_AUTO_FAN_PIN -1
 #define E2_AUTO_FAN_PIN -1
 #define E3_AUTO_FAN_PIN -1
@@ -942,18 +942,18 @@
    * Stepper driver settings
    */
 
-  #define R_SENSE           0.11  // R_sense resistor for SilentStepStick2130
-  #define HOLD_MULTIPLIER    0.7  // Scales down the holding current from run current
-  #define INTERPOLATE          1  // Interpolate X/Y/Z_MICROSTEPS to 256
+  //#define R_SENSE           0.11  // R_sense resistor for SilentStepStick2130
+  //#define HOLD_MULTIPLIER    0.7  // Scales down the holding current from run current
+  //#define INTERPOLATE          1  // Interpolate X/Y/Z_MICROSTEPS to 256
 
-  #define X_CURRENT         1000  // rms current in mA. Multiply by 1.41 for peak current.
-  #define X_MICROSTEPS        16  // 0..256
+  //#define X_CURRENT         1000  // rms current in mA. Multiply by 1.41 for peak current.
+  //#define X_MICROSTEPS        16  // 0..256
 
-  #define Y_CURRENT         1000
-  #define Y_MICROSTEPS        16
+  //#define Y_CURRENT         1000
+  //#define Y_MICROSTEPS        16
 
-  #define Z_CURRENT         1000
-  #define Z_MICROSTEPS        16
+  //#define Z_CURRENT         1000
+  //#define Z_MICROSTEPS        16
 
   //#define X2_CURRENT      1000
   //#define X2_MICROSTEPS     16
