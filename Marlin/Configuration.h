@@ -505,7 +505,7 @@
 // Set the radius for the calibration probe points - max DELTA_PRINTABLE_RADIUS*0.869 for non-eccentric probes
 #define DELTA_CALIBRATION_RADIUS 70 // mm
 // Set the steprate for papertest probing
-#define PROBE_MANUALLY_STEP 0.050
+#define PROBE_MANUALLY_STEP 0.100
 #endif
  //DONE: Auto-Calibration of Delta done 07 OCT 2017 - CWA
 //.Height:292.86    Ex:-0.86  Ey:-0.93  Ez:+0.00    Radius:99.55
@@ -515,8 +515,9 @@
 #define DELTA_PRINTABLE_RADIUS 90.0 // mm
 
 // Center-to-center distance of the holes in the diagonal push rods.
-#define DELTA_DIAGONAL_ROD 218.0 // mm
-
+//#define DELTA_DIAGONAL_ROD 218.0 // mm 
+//DONE: 20 OCT 2017 50mm is actually 51.06. This is off.
+#define DELTA_DIAGONAL_ROD 215.96 //mm //CWA 21 OCT 2017
 // height from z=0 to home position
 #define DELTA_HEIGHT 300.0 // get this value from auto calibrate
 
@@ -604,7 +605,7 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2[, E3[, E4]]]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 100, 100, 100, (96 * 1.05) } //90mm extruded of 100mm 
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 100, 100, 100, (96 * 1.005) } //90mm extruded of 100mm 
 //DONE: CWA 11 OCT 2017 (Lowered from 1.1 to 1.05 due to over extrusion)
 
 /**
